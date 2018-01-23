@@ -65,9 +65,6 @@ udev rule to allow non-root access to BlinkStick USB devices
 %py2_build
 %py3_build
 
-mkdir -p %{_sysconfdir}/udev/rules.d/
-echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="41e5", MODE:="0666"' > %{_sysconfdir}/udev/rules.d/85-blinkstick.rules
-
 %install
 %py2_install
 mv %{buildroot}/%{_bindir}/blinkstick %{buildroot}/%{_bindir}/blinkstick-%{python2_version}
@@ -76,6 +73,9 @@ ln -s %{_bindir}/blinkstick-%{python2_version} %{buildroot}/%{_bindir}/blinkstic
 mv %{buildroot}/%{_bindir}/blinkstick %{buildroot}/%{_bindir}/blinkstick-%{python3_version}
 ln -s %{_bindir}/blinkstick-%{python3_version} %{buildroot}/%{_bindir}/blinkstick-3
 ln -s %{_bindir}/blinkstick %{buildroot}/%{_bindir}/blinkstick-3
+
+mkdir -p %%{buildroot}/{_sysconfdir}/udev/rules.d/
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="41e5", MODE:="0666"' > %{buildroot}/%{_sysconfdir}/udev/rules.d/85-blinkstick.rules
 
 %files -n python2-%{srcname}
 %license LICENSE.txt
