@@ -1,5 +1,7 @@
 %global srcname blinkstick
 %global sum Python package to control BlinkStick USB devices
+%global upstreamname blinkstick-python
+%global commitid a9227d01a9771c0e7aee811a15b824a357f6f09c
 
 Name:           python-%{srcname}
 Version:        1.1.8
@@ -7,8 +9,8 @@ Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        BSD
-URL:            https://github.com/arvydas/blinkstick-python
-Source0:        https://github.com/arvydas/blinkstick-python/archive/a9227d01a9771c0e7aee811a15b824a357f6f09c.zip
+URL:            https://github.com/arvydas/%{upstreamname}
+Source0:        https://github.com/arvydas/%{upstreamname}/archive/%{commitid}.zip
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
@@ -57,7 +59,7 @@ udev rule to allow non-root access to BlinkStick USB devices
 
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n %{upstreamname}-%{commitid}
 
 %build
 %py2_build
