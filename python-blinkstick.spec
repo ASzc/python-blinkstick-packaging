@@ -72,7 +72,7 @@ ln -s %{_bindir}/blinkstick-%{python2_version} %{buildroot}/%{_bindir}/blinkstic
 %py3_install
 mv %{buildroot}/%{_bindir}/blinkstick %{buildroot}/%{_bindir}/blinkstick-%{python3_version}
 ln -s %{_bindir}/blinkstick-%{python3_version} %{buildroot}/%{_bindir}/blinkstick-3
-ln -s %{_bindir}/blinkstick %{buildroot}/%{_bindir}/blinkstick-3
+ln -s %{_bindir}/blinkstick-%{python3_version} %{buildroot}/%{_bindir}/blinkstick
 
 mkdir -p %%{buildroot}/{_sysconfdir}/udev/rules.d/
 echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="41e5", MODE:="0666"' > %{buildroot}/%{_sysconfdir}/udev/rules.d/85-blinkstick.rules
